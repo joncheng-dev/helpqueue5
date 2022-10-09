@@ -1,5 +1,6 @@
 import React from "react";
 import TicketList from "./TicketList";
+import NewTicketForm from "./NewTicketForm";
 
 class TicketControl extends React.Component {
   constructor(props) {
@@ -9,10 +10,26 @@ class TicketControl extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState((prevState) => ({ formDisplayed: !prevState.formDisplayed }));
+  };
+
   render() {
+    let currentlyDisplaying = null;
+    let buttonText = null;
+
+    if (this.state.formDisplayed) {
+      currentlyDisplaying = <NewTicketForm />;
+      buttonText = "Return to Ticket List";
+    } else {
+      currentlyDisplaying = <TicketList />;
+      buttonText = "Add New Help Ticket";
+    }
+
     return (
       <React.Fragment>
-        <TicketList />
+        {currentlyDisplaying}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }

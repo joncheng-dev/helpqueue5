@@ -7,6 +7,7 @@ class TicketControl extends React.Component {
     super(props);
     this.state = {
       formDisplayed: false,
+      mainTicketList: [],
     };
   }
 
@@ -14,12 +15,14 @@ class TicketControl extends React.Component {
     this.setState((prevState) => ({ formDisplayed: !prevState.formDisplayed }));
   };
 
+  handleAddNewTicket = () => {};
+
   render() {
     let currentlyDisplaying = null;
     let buttonText = null;
 
     if (this.state.formDisplayed) {
-      currentlyDisplaying = <NewTicketForm />;
+      currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;
       buttonText = "Return to Ticket List";
     } else {
       currentlyDisplaying = <TicketList />;

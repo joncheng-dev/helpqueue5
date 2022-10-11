@@ -15,7 +15,11 @@ class TicketControl extends React.Component {
     this.setState((prevState) => ({ formDisplayed: !prevState.formDisplayed }));
   };
 
-  handleAddNewTicket = () => {};
+  handleAddNewTicket = () => {
+    const newMainTicketList = [];
+
+    this.setState({ mainTicketList: newMainTicketList });
+  };
 
   render() {
     let currentlyDisplaying = null;

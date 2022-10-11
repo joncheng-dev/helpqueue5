@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 function NewTicketForm() {
   function handleClickSubmit(event) {
     event.preventDefault();
-    // let newTicket = {
-    //   names: event.target.names.value,
-    //   location: event.target.locations.value,
-    //   issue: event.target.issue.value,
-    // };
-    // console.log(newTicket);
+
+    let newTicket = {
+      names: event.target.names.value,
+      location: event.target.locations.value,
+      issue: event.target.issue.value,
+    };
+    console.log(newTicket);
+
     console.log(event.target.names.value);
     console.log(event.target.locations.value);
     console.log(event.target.issue.value);

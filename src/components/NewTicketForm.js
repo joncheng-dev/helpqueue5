@@ -1,16 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function NewTicketForm() {
+function NewTicketForm(props) {
   function handleClickSubmit(event) {
     event.preventDefault();
 
-    let newTicket = {
+    props.onAddingNewTicket({
       names: event.target.names.value,
       location: event.target.locations.value,
       issue: event.target.issue.value,
-    };
-    console.log(newTicket);
+    });
 
     console.log(event.target.names.value);
     console.log(event.target.locations.value);

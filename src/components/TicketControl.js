@@ -31,7 +31,7 @@ class TicketControl extends React.Component {
       currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;
       buttonText = "Return to Ticket List";
     } else {
-      currentlyDisplaying = <TicketList />;
+      currentlyDisplaying = <TicketList ticketList={this.state.mainTicketList} />;
       buttonText = "Add New Help Ticket";
     }
 

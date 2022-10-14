@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { v4 } from "uuid";
 
 function NewTicketForm(props) {
   function handleClickSubmit(event) {
@@ -9,11 +10,8 @@ function NewTicketForm(props) {
       names: event.target.names.value,
       location: event.target.locations.value,
       issue: event.target.issue.value,
+      id: v4(),
     });
-
-    console.log(event.target.names.value);
-    console.log(event.target.locations.value);
-    console.log(event.target.issue.value);
   }
 
   return (
@@ -30,7 +28,6 @@ function NewTicketForm(props) {
 }
 
 NewTicketForm.propTypes = {
-  ticketList: PropTypes.array,
   onAddingNewTicket: PropTypes.func,
 };
 

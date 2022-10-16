@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReusableTicket from "./ReusableTicket";
+import ReusableForm from "./ReusableForm";
 import { v4 } from "uuid";
 
 function NewTicketForm(props) {
@@ -17,7 +17,7 @@ function NewTicketForm(props) {
 
   return (
     <React.Fragment>
-      <ReusableForm buttonText="Submit Ticket" />
+      <ReusableForm formSubmissionHandler={handleClickSubmit} buttonText="Submit Ticket" />
     </React.Fragment>
   );
 }

@@ -8,6 +8,7 @@ class TicketControl extends React.Component {
     this.state = {
       formDisplayed: false,
       mainTicketList: [],
+      selectedTicket: null,
     };
   }
 
@@ -26,8 +27,10 @@ class TicketControl extends React.Component {
   render() {
     let currentlyDisplaying = null;
     let buttonText = null;
-
-    if (this.state.formDisplayed) {
+    if (this.state.selectedTicket !== null) {
+      currentlyDisplaying = <TicketDetail />;
+      buttonText = "Return to Ticket List";
+    } else if (this.state.formDisplayed) {
       currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;
       buttonText = "Return to Ticket List";
     } else {

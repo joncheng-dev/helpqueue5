@@ -5,11 +5,13 @@ function Ticket(props) {
   return (
     <React.Fragment>
       <br />
-      <h3>{props.names}</h3>
-      <h3>{props.location}</h3>
-      <p>
-        <em>{props.issue}</em>
-      </p>
+      <div onClick={}>
+        <h3>{props.names}</h3>
+        <h3>{props.location}</h3>
+        <p>
+          <em>{props.issue}</em>
+        </p>
+      </div>
       <hr />
     </React.Fragment>
   );

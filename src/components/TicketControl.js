@@ -25,12 +25,16 @@ class TicketControl extends React.Component {
     });
   };
 
-  handleEditTicket = (ticket) => {
-    // grab ticket by id
+  handleChangingSelectedTicket = () => {
+    let clickedTicket = ticket.id;
     this.setState({
       formDisplayed: false,
-      editing: true,
+      selectedTicket: clickedTicket,
     });
+  };
+
+  handleEditTicket = (ticket) => {
+    // grab ticket by id
   };
 
   render() {

@@ -25,10 +25,9 @@ class TicketControl extends React.Component {
     });
   };
 
-  handleChangingSelectedTicket = () => {
-    let clickedTicket = ticket.id;
+  handleChangingSelectedTicket = (id) => {
+    const clickedTicket = this.state.mainTicketList.filter((ticket) => ticket.id === id)[0];
     this.setState({
-      formDisplayed: false,
       selectedTicket: clickedTicket,
     });
   };
@@ -47,7 +46,7 @@ class TicketControl extends React.Component {
       currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;
       buttonText = "Return to Ticket List";
     } else {
-      currentlyDisplaying = <TicketList ticketList={this.state.mainTicketList} />;
+      currentlyDisplaying = <TicketList ticketList={this.state.mainTicketList} onClickingTicket={this.handleChangingSelectedTicket} />;
       buttonText = "Add New Help Ticket";
     }
 

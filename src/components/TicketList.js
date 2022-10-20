@@ -7,7 +7,7 @@ function TicketList(props) {
     <React.Fragment>
       <hr />
       {props.ticketList.map((ticket) => (
-        <Ticket names={ticket.names} location={ticket.location} issue={ticket.issue} id={ticket.id} />
+        <Ticket whenTicketClicked={props.onClickingTicket} names={ticket.names} location={ticket.location} issue={ticket.issue} id={ticket.id} />
       ))}
     </React.Fragment>
   );
@@ -15,6 +15,7 @@ function TicketList(props) {
 
 TicketList.propTypes = {
   ticketList: PropTypes.array,
+  onClickingTicket: PropTypes.func,
 };
 
 export default TicketList;

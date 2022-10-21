@@ -4,10 +4,10 @@ function TicketDetail(props) {
   return (
     <React.Fragment>
       <h1>Ticket Detail</h1>
-      <h3>Names</h3>
-      <h3>Location</h3>
+      <h3>{props.names}</h3>
+      <h3>{props.location}</h3>
       <p>
-        <em>Issue</em>
+        <em>{props.issue}</em>
       </p>
       <button onClick={props.onClickingEditTicket}>Edit Ticket</button>
       <button>Delete Ticket</button>

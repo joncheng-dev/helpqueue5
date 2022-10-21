@@ -25,6 +25,7 @@ Ticket.propTypes = {
   location: PropTypes.string,
   issue: PropTypes.string,
   id: PropTypes.string,
+  whenTicketClicked: PropTypes.func,
 };
 
 export default Ticket;

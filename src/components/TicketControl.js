@@ -15,7 +15,15 @@ class TicketControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState((prevState) => ({ formDisplayed: !prevState.formDisplayed }));
+    if (this.state.selectedTicket !== null) {
+      this.setState({
+        formDisplayed: false,
+        selectedTicket: null,
+        editing: false,
+      });
+    } else {
+      this.setState((prevState) => ({ formDisplayed: !prevState.formDisplayed }));
+    }
   };
 
   handleAddNewTicket = (newTicket) => {
@@ -41,7 +49,7 @@ class TicketControl extends React.Component {
     let currentlyDisplaying = null;
     let buttonText = null;
     if (this.state.selectedTicket !== null) {
-      currentlyDisplaying = <TicketDetail onClickingEditTicket={this.handleEditTicket} />;
+      currentlyDisplaying = <TicketDetail ticket={this.state.selectedTicket} onClickingEditTicket={this.handleEditTicket} />;
       buttonText = "Return to Ticket List";
     } else if (this.state.formDisplayed) {
       currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;

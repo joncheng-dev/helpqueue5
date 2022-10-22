@@ -2,6 +2,7 @@ import React from "react";
 import TicketList from "./TicketList";
 import NewTicketForm from "./NewTicketForm";
 import TicketDetail from "./TicketDetail";
+import EditTicketForm from "./EditTicketForm";
 
 class TicketControl extends React.Component {
   constructor(props) {
@@ -41,15 +42,31 @@ class TicketControl extends React.Component {
     });
   };
 
-  handleEditTicket = (ticket) => {
-    // grab ticket by id
+  handleEditClick = () => {
+    this.setState({ editing: true });
+  };
+
+  handleEditTicket = (editedTicket) => {
+    // create a copy of main ticket list
+    // with everything EXCEPT the ticket id
+    // grab values from user
+    // concat ticket to copy of existing list.
+    const editedMainTicketList = this.state.mainTicketList.filter((ticket) => ticket.id !== this.state.selectedTicket.id).concat(editedTicket);
+    this.setState({
+      mainTicketList: editedMainTicketList,
+      selectedTicket: null,
+      editing: false,
+    });
   };
 
   render() {
     let currentlyDisplaying = null;
     let buttonText = null;
-    if (this.state.selectedTicket !== null) {
-      currentlyDisplaying = <TicketDetail ticket={this.state.selectedTicket} onClickingEditTicket={this.handleEditTicket} />;
+    if (this.state.editing) {
+      currentlyDisplaying = <EditTicketForm ticket={this.state.selectedTicket} onSubmitEditTicket={this.handleEditTicket} />;
+      buttonText = "Return to Ticket List";
+    } else if (this.state.selectedTicket !== null) {
+      currentlyDisplaying = <TicketDetail ticket={this.state.selectedTicket} onClickingEditTicket={this.handleEditClick} />;
       buttonText = "Return to Ticket List";
     } else if (this.state.formDisplayed) {
       currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;

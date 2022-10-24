@@ -46,6 +46,15 @@ class TicketControl extends React.Component {
     this.setState({ editing: true });
   };
 
+  handleDeleteTicket = (id) => {
+    const newMainTicketList = this.state.mainTicketList.filter((ticket) => ticket.id !== id);
+    this.setState({
+      formDisplayed: false,
+      mainTicketList: newMainTicketList,
+      selectedTicket: null,
+    });
+  };
+
   handleEditTicket = (editedTicket) => {
     // create a copy of main ticket list
     // with everything EXCEPT the ticket id
@@ -66,7 +75,13 @@ class TicketControl extends React.Component {
       currentlyDisplaying = <EditTicketForm ticket={this.state.selectedTicket} onSubmitEditTicket={this.handleEditTicket} />;
       buttonText = "Return to Ticket List";
     } else if (this.state.selectedTicket !== null) {
-      currentlyDisplaying = <TicketDetail ticket={this.state.selectedTicket} onClickingEditTicket={this.handleEditClick} />;
+      currentlyDisplaying = (
+        <TicketDetail
+          ticket={this.state.selectedTicket}
+          onClickingEditTicket={this.handleEditClick}
+          onClickingDeleteTicket={this.handleDeleteTicket}
+        />
+      );
       buttonText = "Return to Ticket List";
     } else if (this.state.formDisplayed) {
       currentlyDisplaying = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;

@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReusableForm from "./ReusableForm";
-import { v4 } from "uuid";
 
 function EditTicketForm(props) {
+  const { ticket } = props;
   function handleEditTicketFormSubmit(event) {
     event.preventDefault();
 
@@ -11,7 +11,7 @@ function EditTicketForm(props) {
       names: event.target.names.value,
       location: event.target.locations.value,
       issue: event.target.issue.value,
-      id: v4(),
+      id: ticket.id,
     });
   }
   return (
@@ -22,6 +22,7 @@ function EditTicketForm(props) {
 }
 
 EditTicketForm.propTypes = {
+  ticket: PropTypes.object,
   onSubmitEditTicket: PropTypes.func,
 };
 

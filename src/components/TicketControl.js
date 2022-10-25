@@ -56,10 +56,6 @@ class TicketControl extends React.Component {
   };
 
   handleEditTicket = (editedTicket) => {
-    // create a copy of main ticket list
-    // with everything EXCEPT the ticket id
-    // grab values from user
-    // concat ticket to copy of existing list.
     const editedMainTicketList = this.state.mainTicketList.filter((ticket) => ticket.id !== this.state.selectedTicket.id).concat(editedTicket);
     this.setState({
       mainTicketList: editedMainTicketList,

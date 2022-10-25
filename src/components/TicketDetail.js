@@ -13,7 +13,7 @@ function TicketDetail(props) {
       </p>
       <hr />
       <button onClick={props.onClickingEditTicket}>Edit Ticket</button>
-      <button onClick={props.onClickingDeleteTicket}>Delete Ticket</button>
+      <button onClick={() => props.onClickingDeleteTicket(ticket.id)}>Delete Ticket</button>
       <hr />
     </React.Fragment>
   );
